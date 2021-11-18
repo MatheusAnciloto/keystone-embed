@@ -10,7 +10,7 @@ const Post = list({
 });
 
 export default config({
-  db: { provider: 'sqlite', url: 'file:./app.db' },
+  db: { provider: 'postgresql', url: process.env.DATABASE_URL || ''  },
   experimental: {
     generateNextGraphqlAPI: true,
     generateNodeAPI: true,
