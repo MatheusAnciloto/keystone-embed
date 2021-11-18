@@ -3,14 +3,14 @@ import { text } from '@keystone-next/keystone/fields';
 
 const Post = list({
   fields: {
-    title: text({ validation: { isRequired: true } }),
-    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    title: text(),
+    slug: text({ isFilterable: true }),
     content: text(),
   },
 });
 
 export default config({
-  db: { provider: 'sqlite', url: 'file:./app.db'  },
+  db: { provider: 'postgresql', url: process.env.DATABASE_URL || ''  },
   experimental: {
     generateNextGraphqlAPI: true,
     generateNodeAPI: true,
